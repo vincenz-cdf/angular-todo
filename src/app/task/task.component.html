@@ -1,0 +1,12 @@
+<div class="task-item">
+    <div *ngIf="!task.editing">
+        <p>{{ task.title }}</p>
+        <button (click)="edit.emit(task)">Edit</button>
+        <button (click)="delete.emit(task.id)">Delete</button>
+    </div>
+    <div *ngIf="task.editing">
+        <input type="text" [(ngModel)]="task.title" (keyup.enter)="edit.emit(task)">
+        <button (click)="edit.emit(task)">Save</button>
+        <button (click)="task.editing = false">Cancel</button>
+    </div>
+</div>
